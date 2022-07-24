@@ -2,6 +2,7 @@
 *
 resources/ 
 *.swp
+*.swo
 
 # Unignore all with extensions
 !*.*
