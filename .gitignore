@@ -1,6 +1,7 @@
 # Ignore all
 *
 resources/ 
+*.swp
 
 # Unignore all with extensions
 !*.*
