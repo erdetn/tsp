@@ -58,7 +58,7 @@ pub fn (mut this FirFilter)filter(input f32) f32 {
 
 pub fn (mut this FirFilter)filter_array(mut samples []f32) {
     for mut sample in samples {
-        this.filter(sample) 
+        sample = this.filter(sample) 
     }
 }
 
