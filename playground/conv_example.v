@@ -9,8 +9,5 @@ fn main() {
 
 	y := signal.conv<int>(x, h)
 
-
-	for i := 0; i < y.len; i++ {
-		println('y[${i}] = ${y[i]}')
-	}
+	tsp.print(y, 'y')
 }
