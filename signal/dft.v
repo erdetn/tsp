@@ -23,3 +23,13 @@ pub fn dft<T>(x []T) []complex.Complex {
 	}
 	return z 
 }
+
+pub fn dft_power(z []complex.Complex) []f64 {
+	mut pz := []f64{len: z.len}
+
+	for k := 0; k < z.len; k++ {
+		pz[k] = math.pow(z[k].re, 2) + math.pow(z[k].im, 2)
+	}
+
+	return pz
+}
