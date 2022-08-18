@@ -2,6 +2,8 @@
 
 module fir
 
+import math
+
 pub struct FirFilter {
 mut:
 	buffer []f32
@@ -73,3 +75,22 @@ pub fn (this FirFilter)history() []f32 {
 pub fn (this FirFilter)length() int {
 	return this.length
 }
+
+pub fn hanning(l int) []f64 {
+	mut coefficients := []f64{len: l}
+
+	for i := 0; i < l; i++ {
+		coefficients[i] = 0.5*(1 - math.cos(2*math.pi*f64(i)/(l-1)))
+	}
+	return coefficients
+}
+
+pub fn hamming(l int) []f64 {
+	mut coefficients := []f64{len: l}
+
+	for i := 0; i < l; i++ {
+		coefficients[i] = 0.54 - 0.46*math.cos(2*math.pi*f64(i)/(l-1))
+	}
+	return coefficients
+}
+
