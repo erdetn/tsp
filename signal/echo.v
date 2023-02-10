@@ -8,7 +8,7 @@ pub mut:
 	attenuation f32
 }
 
-pub fn echo<X, T>(x []X, params []EchoParameters) []T {
+pub fn echo[X, T](x []X, params []EchoParameters) []T {
 	mut y := []T{}
 	mut y0 := T(0)
 

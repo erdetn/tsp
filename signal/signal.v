@@ -4,7 +4,7 @@ module signal
 
 import math
 
-pub fn new<T>(time []int, signal_function fn (int) T) []T {
+pub fn new[T](time []int, signal_function fn (int) T) []T {
 	mut y := []T{}
 
 	for t in time {
@@ -14,7 +14,7 @@ pub fn new<T>(time []int, signal_function fn (int) T) []T {
 	return y
 }
 
-pub fn vector<T>(args ...int) []T {
+pub fn vector[T](args ...int) []T {
 	mut min := T(0)
 	mut max := T(0)
 	mut step := T(1)
@@ -31,7 +31,7 @@ pub fn vector<T>(args ...int) []T {
 	if args.len == 2 {
 		min = args[0]
 		max = args[1]
-		return []T{len: min + max, cap: min + max, init: (min + T(it * step))}
+		return []T{len: min + max, cap: min + max, init: T(min + T(it * step))}
 	}
 
 	if args.len > 2 {
@@ -40,10 +40,10 @@ pub fn vector<T>(args ...int) []T {
 		max = args[2]
 	}
 
-	return []T{len: min + max, cap: min + max, init: (min + T(it * step))}
+	return []T{len: min + max, cap: min + max, init: T(min + T(it * step))}
 }
 
-pub fn operation<T>(x1 []T, x2 []T, op fn (T, T) T) []T {
+pub fn operation[T](x1 []T, x2 []T, op fn (T, T) T) []T {
 	mut y := []T{}
 
 	if x1.len == x2.len {
@@ -71,7 +71,7 @@ pub fn operation<T>(x1 []T, x2 []T, op fn (T, T) T) []T {
 	return y
 }
 
-pub fn scale<T>(samples []T, a T) []T {
+pub fn scale[T](samples []T, a T) []T {
 	mut y := []T{}
 	for x in samples {
 		y << T(a * x)
@@ -79,7 +79,7 @@ pub fn scale<T>(samples []T, a T) []T {
 	return y
 }
 
-pub fn shift<T>(samples []T, k int) []T {
+pub fn shift[T](samples []T, k int) []T {
 	mut y := []T{}
 
 	if k > 0 {
@@ -99,7 +99,7 @@ pub fn shift<T>(samples []T, k int) []T {
 	return y
 }
 
-pub fn mirror<T>(samples []T) []T {
+pub fn mirror[T](samples []T) []T {
 	mut y := []T{len: samples.len, cap: samples.cap}
 
 	for i := 0; i < samples.len; i++ {
@@ -108,7 +108,7 @@ pub fn mirror<T>(samples []T) []T {
 	return y
 }
 
-pub fn sum<T>(samples []T) T {
+pub fn sum[T](samples []T) T {
 	mut sum := T(0)
 	for sample in samples {
 		sum += sample
@@ -124,7 +124,7 @@ pub fn product<T, P>(samples []T) P {
 	return prod
 }
 
-pub fn energy<T>(samples []T) f64 {
+pub fn energy[T](samples []T) f64 {
 	mut se := f64(0)
 	for sample in samples {
 		se += math.pow(f64(sample), math.abs<f64>(sample))
@@ -132,7 +132,7 @@ pub fn energy<T>(samples []T) f64 {
 	return se
 }
 
-pub fn power<T>(samples []T, period int) f64 {
+pub fn power[T](samples []T, period int) f64 {
 	mut pe := f64(0)
 	mut x := f64(0)
 

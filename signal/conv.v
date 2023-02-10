@@ -12,7 +12,7 @@ pub fn max(a int, b int) int {
 	return if a > b {a} else {b} 
 }
 
-pub fn conv<T>(x []T, h []T) []T {
+pub fn conv[T](x []T, h []T) []T {
 	len_y := x.len + h.len - 1
 	mut y := []T{}
 
@@ -31,4 +31,8 @@ pub fn conv<T>(x []T, h []T) []T {
 		y << yn
 	}
 	return y 
+}
+
+pub fn autocorrelate[T](x []T) []T {
+	return conv[T](x, x)
 }

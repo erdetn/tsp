@@ -5,7 +5,7 @@ module signal
 import math
 import math.complex
 
-pub fn dft<T>(x []T) []complex.Complex {
+pub fn dft[T](x []T) []complex.Complex {
 	mut z := []complex.Complex{len: x.len}
 	mut x_re, mut x_im, mut theta := f64(0), f64(0), f64(0)
 	m := x.len 
